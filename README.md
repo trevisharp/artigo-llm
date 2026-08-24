@@ -53,7 +53,7 @@ $$H_1 \land H_2 \land H_3 \land H_4 \implies P \lessapprox \rho C + \rho_{cw} \s
 
 ### Hipótese 5: Pior caso de requisições
 
-Outra aproximação de limite superior útil é analisar o pior caso de uso do cache, onde $r_0$ é gigantesca e todas as outras são desprezíveis. Nesse contexto podemos tomar $r_0 = C$ e $ \forall k > 0 r_k = 0$. Assim, podemos calcular o limite superior de custo como:
+Outra aproximação de limite superior útil é analisar o pior caso de uso do cache, onde $r_0$ é gigantesca e todas as outras são desprezíveis. Nesse contexto podemos tomar $r_0 = C$ e $\forall k > 0 r_k = 0$. Assim, podemos calcular o limite superior de custo como:
 
 $$ H_1 \land H_2 \land H_3 \land H_4 \land H_5 \implies P \lessapprox \rho C + \rho_{cw} \sum_{k=0}^R C = \rho C + \rho_{cw} R C $$
 
