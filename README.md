@@ -85,9 +85,11 @@ Um tipo de fluxo de trabalho comum é o trabalho exploratório, onde o modelo pr
 Quando uma sessão cresce muito, uma decisão comum é a de iniciar uma nova sessão, repassando conteúdo realizando uma processo exploratório. De tal forma, podemos considerar dois cenários possíveis: 1.Continuar a trabalhar na mesma sessão; 2.Limpar a sessão e começar do zero. Podemos avaliar os custos de ambos os cenários:
 
 - Continuar na mesma sessão: Temos um custo inicial $L_0$ e fazemos uma nova interação que resulta em novas requisições $\Delta R$ e novo contexto $\Delta C$. Assim:
+
 $$ L_{keep} = (K + R_0 + \Delta R) (C_0 + \Delta C) $$
 
 - Limpar a sessão: Limpa a sessão passando um novo conteúdo exploratório $E$ e depois realizando a interação:
+
 $$ L_{clear} = L_0 + L' = (K + R_0) C_0 + (K + R_0)(E + \Delta C) $$
 
 Assim, o ganho de limpar a sessão é:
