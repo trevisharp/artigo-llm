@@ -78,7 +78,16 @@ Onde:
 
 $$L = (K + R) C$$
 
-Assim podemos usar $L$ como uma medida extremamente útil para estimar custos de sessões. Para muitos casos realistas, um bom valor para K é 50.
+Assim podemos usar $L$ como uma medida extremamente útil para estimar custos de sessões. Ao analisar os custos de serviços como o *Claude* podemos chegar a valores tipicos de K:
+
+|Serviço/Modelo|$\rho_{it}$|$\rho_{ot}$|$\rho_{cw}$|$\rho_{cr}$|
+|--------------|-----------|-----------|-----------|-----------|
+| Claude Fable | $10$      | $50$      | $20$      | $1$       |
+| Claude Opus 5| $5$       | $25$      | $10$      | $0.50$    |
+
+Assim $K = { \rho_m \over \rho } = { max((\rho_{it} + \rho_{cw}), (\rho_{ot} + \rho_{cw})) \over \rho_cr } = { max(70, 30) \over 1 } = 70$
+
+Considerando o valor de pior caso. Muitas vezes usar valores médios para $\rho_m$ ao invés do máximo, ou seja, tomando $K = 50$ trás aproximações mais realistas, mas que por vezes podem subestimar os custos.
 
 Essa equação também mostra o caracter quadrático do consumo de recursos em função da quantidade de trabalho que é feito na sessão, já que R e C sobem juntas e correlacionadas com o uso. Por consequência:
 
