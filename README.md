@@ -87,7 +87,9 @@ Assim podemos usar $L$ como uma medida extremamente útil para estimar custos de
 
 Assim $K = { \rho_m \over \rho } = { max((\rho_{it} + \rho_{cw}), (\rho_{ot} + \rho_{cw})) \over \rho_cr } = { max(70, 30) \over 1 } = 70$
 
-Considerando o valor de pior caso. Muitas vezes usar valores médios para $\rho_m$ ao invés do máximo, ou seja, tomando $K = 50$ trás aproximações mais realistas, mas que por vezes podem subestimar os custos.
+Considerando o valor de pior caso. Muitas vezes usar valores médios para $\rho_m$ ao invés do máximo, ou seja, tomando $K = 50$ trás aproximações mais realistas, mas que por vezes podem subestimar os custos. Na prática existe um $\alpha$ de tal forma que:
+
+$$P \approx \alpha L$$
 
 Essa equação também mostra o caracter quadrático do consumo de recursos em função da quantidade de trabalho que é feito na sessão, já que R e C sobem juntas e correlacionadas com o uso. Por consequência:
 
@@ -128,3 +130,20 @@ $$ G = (K + R_0) E -  (C_0 + \Delta C) \Delta R $$
 Queremos descobrir se $G > 0$, ou seja, se vale a pena limpar a sessão, ou seja, descobrir se:
 
 $$ (K + R_0) E > (C_0 + \Delta C) \Delta R $$
+
+## Testes Práticos
+
+*Temporário*
+
+> ls "$HOME\.claude\projects" -r -Filter *.jsonl | sort LastWriteTime | select -Last 1 | % { gc $_.FullName } | % { ConvertFrom-Json $_ } | ? { $_.type -eq 'assistant' } | % requestId | sort -Unique | measure | % Count
+
+Abaixo testes retirados de casos de uso real.
+
+| P (US$) | C (tokens) |  R  |   L   | $\alpha$ |
+| :-----: | :--------: | :-: | :---: | :------: |
+|   15,40 |       288k | 117 |  48 M |     0,32 |
+|   64,40 |       500k | 348 | 199 M |     0,32 |
+|    2,58 |       100k |  20 |   7 M |     0,37 |
+|   27,40 |       371k | 182 |  86 M |     0,32 |
+|    3,02 |       104k |  46 |  10 M |     0,30 |
+|   10,30 |       200k | 110 |  32 M |     0,32 |
